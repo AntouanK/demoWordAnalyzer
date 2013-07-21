@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata" />
+    <link rel="stylesheet" href="style.css" />
+    <title>demo test ( by Antonis Karamitros )</title>
+  </head>
+
+  <body>
+    <div id="descriptionContainer" class="container" style="display:none">
+      <h1>Demo test!</h1>
+      <p>Write an application that processes a paragraph of text and outputs all the words found in the text and the number of occurrences of each word. 
+      The words need to show up in the results list just once and they must be sorted alphabetically and written all in lower caps.
+      </p>
+      <p>Example:<br />
+      Input:<br />
+      It was so and so.<br />
+      Output:<br />
+      and    1<br />
+      it     1<br />
+      so     2<br />
+      was    1</p>
+      <p>The application can be written in JavaScript or CoffeeScript and use whatever 3rd party libraries required.  User interface design is up to the developer and is not important as long as it functional.
+      Test expected to take anywhere between a couple of hours and a day, depending on how much the candidate wants to show.</p>
+      <p>Guidelines:<br />
+      The candidate is expected to demonstrate:<br />
+      Test driven development approach<br />
+      Good use of an MVC framework (Knockout, Backbone, Ember etc.)<br />
+      Design patterns knowledge<br />
+      Code quality (separation of concerns, decoupling etc.)
+      </p>
+      <p>Bonus:<br />
+    Render the results graphically<br />
+    Animate the graphical representation</p>
+    <a id="startBtn" class="btn btn-large" style="display:none">Start</a>
+    </div>
+    <!---- my app ---->
+    <div id="demoApp" class="container" style="display:none">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!-- text input -->
+                <div id="textContent" class="span7">
+                    <label>Your text here</label>
+                    <textarea id="inputText" rows="14" data-bind="value: text, valueUpdate: 'afterkeydown'" placeholder="Your text here..."></textarea>
+                    <a id="clearBtn" class="btn" data-bind="click: clearText">clear text</a>
+                    <a id="goBackBtn" class="btn btn-info">back</a>
+                </div>
+                <!-- results sidebar -->
+                <div id="sidebar" class="span5" data-bind="visible: hasResults">
+                    <table class="table table-hover span2">
+                        <thead>
+                            <tr>
+                                <th data-bind="click: sortByWord">word</th>
+                                <th data-bind="click: sortByAppearances">appearances</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: results">
+                            <tr>
+                                <td data-bind="text: word"></td>
+                                <td data-bind="text: appearances"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+              <div class="alert alert-info">
+                <a href="https://github.com/blackjim/demoWordAnalyzer" target="_blank">You can see the code here (Antonis Karamitros, 19 July 2013)</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="knockout@2.3.0" data-semver="2.3.0" src="http://knockoutjs.com/downloads/knockout-2.3.0.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>
